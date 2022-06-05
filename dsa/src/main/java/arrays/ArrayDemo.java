@@ -7,7 +7,7 @@ import java.util.List;
 public class ArrayDemo {
 
 public static void main(String[] args) {
-   int[] a = {8,3,6,17,11};
+   //int[] a = {8,3,6,17,11};
    // printMaxMin(a);
    // System.out.println(linSearch(a, 9));
    // System.out.println(binarySearch(new int[]{7,8,9,10,12,22,25,60}, 600));
@@ -23,9 +23,52 @@ public static void main(String[] args) {
 //   printFreq(arr);
 //   System.out.println(Arrays.toString(arr));
    
-   int[] price = {1,5,3,8,12};
-   findMaxProfit(price);
+//   int[] price = {1,5,3,8,12};
+//   findMaxProfit(price);
+//   int [] a = {2,8,3,9,6,5,4};
+//   System.out.println(getSum(a, 0,2));
+//   System.out.println(getSum(a, 1,3));
+	//int[] a = {3,0,1,2,4};
+	int[] a = {1,0,2,0,1};
+	System.out.println(getCapacity(a));
+
+   
   }
+
+
+
+  static int getCapacity(int[] a) {
+	  int w = 0, n = a.length;
+	  int[] lmax  = new int[n], rmax = new int[n];
+	  lmax[0] = 0 ;
+	  rmax[n-1]= 0;
+	  for(int i=1;i<n;i++)
+		  lmax[i] = max(a[i-1],lmax[i-1]);
+	  for(int i=n-2;i>=0;i--)
+		  rmax[i] = max(a[i+1],rmax[i+1]);
+	  for(int i=0;i<n;i++) {
+		  int m = min(lmax[i],rmax[i]);
+		  if(m> a[i])
+			  w = w + (m-a[i]);
+	  }
+	  return w;
+  }
+  
+  static int max(int a, int b) {
+	  return (a>b)?a:b;
+  }
+  
+  static int min(int a, int b) {
+	  return (a<b)?a:b;
+  }
+  
+	static int getSum(int[] a, int i, int j) {
+		int[] x  = new int[a.length];
+		x[0]  = a[0];
+		for(int m=1;m<a.length;m++)
+			x[m] = a[m] + x[m-1];
+		return (i==0)?x[j]:x[j] - x[i-1];
+	}
     
   private static void findMaxProfit(int[] price) {
 	int p =0;
