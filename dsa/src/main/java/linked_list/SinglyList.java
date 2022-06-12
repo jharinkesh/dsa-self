@@ -5,16 +5,58 @@ public class SinglyList {
 	
 	public static void main(String[] args) {
 		SinglyList list = new SinglyList();
-		list.add(40);
-		list.add(50);
-		list.add(60);
-		list.add(70);
+		list.add(6);
+		list.add(7);
+		list.add(8);
+		list.add(9);
+		list.add(11);
+
 		list.disp();
-		list.removeFirst();
-		list.disp();
-		list.removeLast();
+//		list.removeFirst();
+//		list.removeLast();
+		
+//		System.out.println(list.searchR(list.head, 6, 1));
+		list.insertPosition(10,4);
 		list.disp();
 
+	}
+	
+	void insertPosition(int data, int p) {
+		Node n1 = head;
+		int count = 1;
+		while(n1!=null) {
+			if(count == p-1) {
+				Node n2 = new Node(data);
+				n2.next = n1.next;
+				n1.next = n2;
+				return;
+			}
+			n1 = n1.next;
+			count++;
+		}
+	}
+	
+	int search(int k) {
+		int count =1;
+		Node n1 = head;
+		if(n1==null)
+			return -1;
+		while(n1!=null) {
+			if(n1.data == k)
+				return count;
+			n1 = n1.next;
+			count++;
+		}
+		return -1;
+	}
+	
+	int searchR(Node n1,int k, int i) {
+		if(n1!=null) {
+			if(n1.data == k)
+				return i;
+			return searchR(n1.next, k, i+1);
+		}
+		return -1;
 	}
 	
 	Node head = null;
