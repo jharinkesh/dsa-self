@@ -10,16 +10,31 @@ public class SinglyList {
 		list.add(8);
 		list.add(9);
 		list.add(11);
+		
+		
+		
 
 		list.disp();
 //		list.removeFirst();
 //		list.removeLast();
-		
+		list.reverse();
 //		System.out.println(list.searchR(list.head, 6, 1));
-		list.insertPosition(10,4);
+		//list.insertPosition(10,4);
 		list.disp();
 
 	}
+	
+	void reverse() {
+		Node prev = null, n1 = head;
+		while(n1!=null) {
+			Node t = n1.next;
+			n1.next = prev;
+			prev = n1;
+			n1 = t;
+		}
+		head = prev;
+	}
+	
 	
 	void insertPosition(int data, int p) {
 		Node n1 = head;
