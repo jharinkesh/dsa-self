@@ -5,24 +5,69 @@ public class SinglyList {
 	
 	public static void main(String[] args) {
 		SinglyList list = new SinglyList();
-		list.add(6);
-		list.add(7);
-		list.add(8);
-		list.add(9);
-		list.add(11);
+//		list.add(6);
+//		list.add(7);
+//		list.add(8);
+//		list.add(9);
+//		list.add(11);
 		
 		
 		
 
-		list.disp();
+//		list.disp();
 //		list.removeFirst();
 //		list.removeLast();
-		list.reverse();
+//		list.reverse();
 //		System.out.println(list.searchR(list.head, 6, 1));
 		//list.insertPosition(10,4);
 		list.disp();
-
+		list.access(1);
+		list.disp();
+		list.access(2);
+		list.disp();
+		list.access(3);
+		list.disp();
+		list.access(1);
+		list.disp();
+		list.access(3);
+		list.disp();
 	}
+	
+	void access(int k) {
+		Node n1 = head;
+		if(n1 == null) {
+			head = new Node(k);
+			return;
+		}
+		
+		if(head.data == k)
+			return;
+		
+		// Searching
+		Node p = null;
+		boolean hit = false;
+		while(n1!=null) {
+			hit = (n1.data == k);
+			if(hit)
+				break;
+			p = n1;
+			n1 = n1.next;
+		}
+		
+		//Hit
+		if(hit) {
+			p.next = n1.next;
+			n1.next = head;
+			head = n1;
+		}else {
+			//Miss
+			Node n2 = new Node(k);
+			n2.next = head;
+			head = n2;
+		}
+		
+	}
+	
 	
 	void reverse() {
 		Node prev = null, n1 = head;
