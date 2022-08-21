@@ -1,4 +1,3 @@
-package stack;
 
 import java.util.Arrays;
 import java.util.List;
@@ -6,7 +5,16 @@ import java.util.Stack;
 
 public class ValidParenthesis {
 
-    boolean isValid(String s){
+    public static void main(String[] args) {
+        System.out.println(isValid("{()}"));
+        System.out.println(isValid("{())}"));
+        System.out.println(isValid("[{()}]"));
+        System.out.println(isValid(""));
+        System.out.println(isValid("{"));
+
+    }
+
+    static boolean isValid(String s){
         Stack<Character> st = new Stack<Character>();
         List<Character> opening = Arrays.asList('(','{','[');
         List<Character> closing = Arrays.asList(')','}',']');
@@ -18,7 +26,7 @@ public class ValidParenthesis {
                 if(!st.isEmpty()){
                     char t = st.peek();
                     int index = closing.indexOf(x);
-                    char v = opening.get(i);
+                    char v = opening.get(index);
                     if(t == v)
                         st.pop();
                     else
