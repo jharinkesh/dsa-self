@@ -7,7 +7,7 @@ public class BinaryTree {
         Node four = new Node(4);
         Node five = new Node(5);
         Node six = new Node(6);
-        Node seven = new Node(70);
+        Node seven = new Node(7);
         Node eight = new Node(8);
         Node nine = new Node(9);
         Node ten = new Node(10);
@@ -28,7 +28,19 @@ public class BinaryTree {
 //        levelOrder(four);
 //        System.out.println(search2(four, 91));
 //        System.out.println(height(four));
-        System.out.println(getMax(four));
+//        System.out.println(getMax(four));
+        printlevel(four, 2);
+    }
+
+    static void printlevel(Node root, int k){
+        if(root!=null){
+            if(k==0)
+                System.out.print(root.key+" ");
+            else {
+                printlevel(root.left, k - 1);
+                printlevel(root.right, k-1);
+            }
+        }
     }
 
     static Integer getMax(Node root){
