@@ -4,7 +4,7 @@ import java.util.*;
 
 public class TopKFrequent {
 
-    public static void main(String[] args) {
+        public static void main(String[] args) {
         int[] a= {1,2,2,3,3,3,3,4,4,4};
         int k = 2;
         Map<Integer, Integer> m = new HashMap();
